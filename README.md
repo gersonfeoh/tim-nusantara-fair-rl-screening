@@ -2,7 +2,7 @@
 
 Code and result files for the manuscript "When to Ask and When to Refer: Fairness-Audited Reinforcement Learning for Depression Screening" (Tim Nusantara, Doctoral Program in Information Systems, Universitas Komputer Indonesia). The manuscript is being prepared for Jurnal Sinkron. Link to the published paper: [to be added after publication].
 
-Archived release: [Zenodo DOI to be added after the first release].
+Archived release (v1.0.0): [https://doi.org/10.5281/zenodo.24500109](https://doi.org/10.5281/zenodo.24500109). All versions: [https://doi.org/10.5281/zenodo.24500108](https://doi.org/10.5281/zenodo.24500108).
 
 ## What this repository does
 

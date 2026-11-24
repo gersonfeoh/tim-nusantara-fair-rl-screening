@@ -1,0 +1,29 @@
+{
+  "title": "Code for: When to Ask and When to Refer: Fairness-Audited Reinforcement Learning for Depression Screening",
+  "upload_type": "software",
+  "description": "Colab notebooks and result files for a simulation study in which a tabular Q-learning agent decides, step by step, whether to stop, ask one more item, or refer a respondent to a counselor in depression screening, with a fairness audit across age groups. Data come from the Open-Source Psychometrics Project and are not redistributed.",
+  "creators": [
+    {
+      "name": "Feoh, Gerson",
+      "orcid": "0000-0003-0511-4798",
+      "affiliation": "Doctoral Program in Information Systems, Universitas Komputer Indonesia, Bandung, Indonesia"
+    },
+    {
+      "name": "Setiawan, Eko Budi",
+      "affiliation": "Doctoral Program in Information Systems, Universitas Komputer Indonesia, Bandung, Indonesia"
+    },
+    {
+      "name": "Hardianto, Romi",
+      "affiliation": "Doctoral Program in Information Systems, Universitas Komputer Indonesia, Bandung, Indonesia"
+    }
+  ],
+  "license": "mit",
+  "keywords": [
+    "depression screening",
+    "fairness",
+    "human-AI collaboration",
+    "learning to defer",
+    "reinforcement learning"
+  ],
+  "access_right": "open"
+}

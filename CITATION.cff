@@ -16,7 +16,7 @@ authors:
     orcid: "https://orcid.org/0000-0001-6575-4645"
     affiliation: "Doctoral Program in Information Systems, Universitas Komputer Indonesia, Bandung, Indonesia"
 license: MIT
-version: "1.0.0"
+version: "1.0.1"
 repository-code: "https://github.com/gersonfeoh/tim-nusantara-fair-rl-screening"
 keywords:
   - depression screening

@@ -32,6 +32,7 @@ LICENSE
 |---|---|
 | `UjiCoba_v4.2_Agen3Aksi_TimNusantara.ipynb` | Main notebook: data cleaning, reference bands, prediction models for 7 to 10 items, Q-learning agent, policy selection, test evaluation, and the ask-cost demo. Runs the single split with seed 42. |
 | `Audit_v4.2_TimNusantara.ipynb` | Audit notebook: repeats the pipeline over seven random splits (seeds 1, 2, 3, 4, 5, 6, 42), runs the fairness and sensitivity checks, and writes `cek_tambahan_v42.json`, which stores the results and the software versions used. |
+| `Audit_v4.2_GPU_T4_pembanding.ipynb` | Comparison only, not a reference. The same audit code executed on the Colab GPU T4 runtime (Python 3.13.16) on 25 November 2026, kept with its outputs to document runtime sensitivity (see Numerical sensitivity). Do not use its numbers for reporting, and do not rerun it. |
 
 ## Data
 
@@ -46,7 +47,7 @@ The data are international, voluntary, online respondents and not Indonesian stu
 Google Colab is the reference platform, because the reported numbers come from Colab runs.
 
 1. Open a notebook from the `notebooks` folder in Google Colab.
-2. Choose Runtime, then Run all.
+2. Choose Runtime, Change runtime type, CPU, then Run all. Use the CPU runtime for both notebooks; the GPU runtime runs on a different machine and gives slightly different numbers.
 3. The audit notebook runs seven splits; in the stored run it took about 3 minutes (193 seconds). The main notebook runs one split.
 
 Results are written to the folder named in the first cell of each notebook.
@@ -72,9 +73,11 @@ The manuscript reports the seven-split averages from the audit notebook (abstrac
 
 ## Numerical sensitivity
 
-With identical package versions, the number of counselor reviews for seed 42 differed between platforms in our tests (480 on Colab, 477 on another x86_64 machine). The cause is floating-point behavior of the underlying linear algebra libraries on different CPUs, which can change a few borderline decisions. Small differences of a few respondents on a single split are therefore expected outside Colab. The conclusions of the manuscript rest on averages over seven splits, not on one count.
+With identical package versions, the number of counselor reviews for seed 42 differed between platforms in our tests (480 on the Colab CPU runtime, 477 on the Colab GPU T4 runtime and on another x86_64 machine). The cause is floating-point behavior of the underlying linear algebra libraries on different CPUs, which can change a few borderline decisions. Small differences of a few respondents on a single split are therefore expected outside the Colab CPU runtime. The conclusions of the manuscript rest on averages over seven splits, not on one count.
 
-Package versions recorded by the audit notebook in its Colab run: Python 3.13.18, numpy 2.4.6, pandas 2.2.3, scipy 1.16.3, scikit-learn 1.6.1. In that run, seed 42 gave 480 counselor reviews and all seven splits matched the numbers reported in the manuscript.
+The GPU T4 comparison run (`notebooks/Audit_v4.2_GPU_T4_pembanding.ipynb`) used the same code and package versions; only the Python patch release and the machine differed. Our code does not use the GPU, so the difference comes from the machine, not from the GPU itself. Its seven-split averages were 13.7 missed severe cases for the agent, 22.0 for the fixed rule, 49.3 for referral without asking, and 11.0 for asking everyone three items, against 13.1, 22.0, 37.6, and 9.9 on the CPU reference run. The ranking of the policies was the same, and the agent missed fewer cases than the fixed rule in all seven splits on both runtimes. Referral without asking changed most, because two splits selected a different lambda on the GPU runtime, which reduced the shared counselor budget.
+
+Package versions recorded by the audit notebook in its Colab CPU run: Python 3.13.18, numpy 2.4.6, pandas 2.2.3, scipy 1.16.3, scikit-learn 1.6.1. In that run, seed 42 gave 480 counselor reviews and all seven splits matched the numbers reported in the manuscript.
 
 ## Limitations
 
@@ -85,7 +88,7 @@ Package versions recorded by the audit notebook in its Colab run: Python 3.13.18
 
 ## Ringkasan dalam bahasa Indonesia
 
-Repositori ini memuat kode dan berkas hasil untuk naskah tentang agen Q-learning tiga aksi (BERHENTI, TANYA, ke konselor) pada skrining depresi dengan data terbuka DASS. Data mentah tidak disertakan dan diunduh langsung dari Open-Source Psychometrics Project. Colab adalah platform acuan. Hasil satu split (seed 42) dapat berbeda beberapa responden pada mesin lain, sehingga kesimpulan naskah bertumpu pada rata-rata tujuh split.
+Repositori ini memuat kode dan berkas hasil untuk naskah tentang agen Q-learning tiga aksi (BERHENTI, TANYA, ke konselor) pada skrining depresi dengan data terbuka DASS. Data mentah tidak disertakan dan diunduh langsung dari Open-Source Psychometrics Project. Colab dengan runtime CPU adalah platform acuan; berkas `Audit_v4.2_GPU_T4_pembanding.ipynb` hanya pembanding dari runtime GPU T4. Hasil satu split (seed 42) dapat berbeda beberapa responden pada mesin lain, sehingga kesimpulan naskah bertumpu pada rata-rata tujuh split.
 
 ## How to cite
 
